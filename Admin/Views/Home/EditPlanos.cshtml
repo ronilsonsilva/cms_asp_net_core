@@ -1,0 +1,136 @@
+﻿@model CMSPlanosViewModel
+@{
+    ViewData["Title"] = "Tabela de Planos";
+}
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="fa fa-caret-down"></a>
+                    <a href="#" class="fa fa-times"></a>
+                </div>
+
+                <h2 class="panel-title">Tabela de Planos</h2>
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal form-bordered" asp-action="EditPlanos" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input hidden asp-for="ID" />
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="Titulo"></label>
+                        <div class="col-md-6">
+                            <input asp-for="Titulo" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="SubTitulo"></label>
+                        <div class="col-md-6">
+                            <input asp-for="SubTitulo" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-6 col-xs-11">
+                            <button type="submit" value="salvarValores" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="fa fa-caret-down"></a>
+                    <a href="#" class="fa fa-times"></a>
+                </div>
+
+                <h2 class="panel-title">Adicionar Tabela de Planos</h2>
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal form-bordered" asp-action="AdicionarPlano" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input hidden asp-for="ID" />
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="CMSTabelaDePlanos.TextoHeader"></label>
+                        <div class="col-md-6">
+                            <input asp-for="CMSTabelaDePlanos.TextoHeader" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="CMSTabelaDePlanos.TextoFooter"></label>
+                        <div class="col-md-6">
+                            <input asp-for="CMSTabelaDePlanos.TextoFooter" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="CMSTabelaDePlanos.ValorPlano"></label>
+                        <div class="col-md-6">
+                            <input asp-for="CMSTabelaDePlanos.ValorPlano" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-6 col-xs-11">
+                            <button type="submit" value="salvarValores" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+@if (Model?.cMSTabelaDePlanos != null)
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                    </div>
+
+                    <h2 class="panel-title">Planos Ativo</h2>
+                </header>
+                <div class="panel-body">
+                    @foreach (var item in Model?.cMSTabelaDePlanos)
+                    {
+                        <div class="col-md-4">
+                            <div class="container">
+                                <h2>@item.TextoHeader</h2>
+                                <p>@item.Descircao</p>
+                            </div>
+                            <form class="form-horizontal form-bordered" asp-action="ExcluirTabelaDePlano" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input hidden asp-for="ID" />
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"></label>
+                                    <div class="col-md-6 col-xs-11">
+                                        <button type="submit" name="submit" value="@item.ID" class="btn btn-danger">Excluir</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+}
+
+@section Scripts{
+
+}

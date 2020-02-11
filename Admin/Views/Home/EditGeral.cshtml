@@ -1,0 +1,111 @@
+﻿@model WebsiteViewModel
+@{
+    ViewData["Title"] = "Editar Informações Geral do Website";
+}
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="fa fa-caret-down"></a>
+                    <a href="#" class="fa fa-times"></a>
+                </div>
+
+                <h2 class="panel-title">Editar Informações Do Website</h2>
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal form-bordered" asp-action="EditGeral" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input hidden asp-for="ID" />
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Nome Website</label>
+                        <div class="col-md-6">
+                            <input asp-for="NomeWebsite" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Título Website</label>
+                        <div class="col-md-6">
+                            <input asp-for="TituloHeader" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Número do WhatsApp</label>
+                        <div class="col-md-6">
+                            <input asp-for="WhatsAppNumero" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Link do Facebook</label>
+                        <div class="col-md-6">
+                            <input asp-for="FacebookURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Link Instagram</label>
+                        <div class="col-md-6">
+                            <input asp-for="InstagramURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Link Google+</label>
+                        <div class="col-md-6">
+                            <input asp-for="GoogleMaisURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Link Pinterest</label>
+                        <div class="col-md-6">
+                            <input asp-for="PinterestURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Link Twitter</label>
+                        <div class="col-md-6">
+                            <input asp-for="TwitterURL" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Ìcone</label>
+                        <div class="col-md-6">
+                            <input type="file" asp-for="IconeArquivo" />
+                        </div>
+                        @if (Model?.LogoTopo != null)
+                        {
+                            <div class="col-md-3">
+                                <a asp-action="VisualizarIcone" target="_blank">Visualizar Ícone</a>
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Logo</label>
+                        <div class="col-md-6">
+                            <input type="file" asp-for="LogoTopoArquivo" />
+                        </div>
+                        @if (Model?.LogoTopo != null)
+                        {
+                            <div class="col-md-3">
+                                <a asp-action="VisualizarLogo" target="_blank">Visualizar Logo</a>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-6 col-xs-11">
+                            <button type="submit" value="salvarValores" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts{
+
+}

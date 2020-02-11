@@ -1,0 +1,173 @@
+﻿@model CardParceirosViewModel
+@{
+    ViewData["Title"] = "Área de Parceiros";
+}
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="panel-actions">
+                    <a href="#" class="fa fa-caret-down"></a>
+                    <a href="#" class="fa fa-times"></a>
+                </div>
+
+                <h2 class="panel-title">Área de Parceiros</h2>
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal form-bordered" asp-action="EditParceiros" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input hidden asp-for="ID" />
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="NomeParceiro"></label>
+                        <div class="col-md-6">
+                            <input asp-for="NomeParceiro" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="Descricao"></label>
+                        <div class="col-md-6">
+                            <input asp-for="Descricao" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Logo</label>
+                        <div class="col-md-6">
+                            <input type="file" asp-for="LogoParceiroArquivo" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="HabilitarFacebook"></label>
+                        <div class="col-md-6 switch switch-success">
+                            <input type="checkbox" data-plugin-ios-switch asp-for="HabilitarFacebook" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="FacebookURL"></label>
+                        <div class="col-md-6">
+                            <input asp-for="FacebookURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="HabilitarInstagram"></label>
+                        <div class="col-md-6 switch switch-success">
+                            <input type="checkbox" data-plugin-ios-switch asp-for="HabilitarInstagram" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="InstagramURL"></label>
+                        <div class="col-md-6">
+                            <input asp-for="InstagramURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Exibir Website</label>
+                        <div class="col-md-6 switch switch-success">
+                            <input type="checkbox" data-plugin-ios-switch asp-for="HabilitarGoogleMais" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" >Website</label>
+                        <div class="col-md-6">
+                            <input asp-for="GoogleMaisURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="HabilitarPinterest"></label>
+                        <div class="col-md-6 switch switch-success">
+                            <input type="checkbox" data-plugin-ios-switch asp-for="HabilitarPinterest" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="PinterestURL"></label>
+                        <div class="col-md-6">
+                            <input asp-for="PinterestURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="HabilitarTwitter"></label>
+                        <div class="col-md-6 switch switch-success">
+                            <input type="checkbox" data-plugin-ios-switch asp-for="HabilitarTwitter" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="TwitterURL"></label>
+                        <div class="col-md-6">
+                            <input asp-for="TwitterURL" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="HabilitarWhatsApp"></label>
+                        <div class="col-md-6 switch switch-success">
+                            <input type="checkbox" data-plugin-ios-switch asp-for="HabilitarWhatsApp" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" asp-for="WhatsAppNumero"></label>
+                        <div class="col-md-6">
+                            <input asp-for="WhatsAppNumero" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-6 col-xs-11">
+                            <button type="submit" value="salvarValores" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+@if (Model?.CardParceiros != null)
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <a href="#" class="fa fa-caret-down"></a>
+                        <a href="#" class="fa fa-times"></a>
+                    </div>
+
+                    <h2 class="panel-title">Imagens</h2>
+                </header>
+                <div class="panel-body">
+                    @foreach (var item in Model?.CardParceiros)
+                    {
+                        var base64_ = Convert.ToBase64String(item.LogoParceiro);
+                        var imgSrc_ = String.Format("data:image/gif;base64,{0}", base64_);
+                        <div class="col-md-4">
+                            <div class="container">
+                                <h2>@item.NomeParceiro</h2>
+                                <p>@item.Descricao</p>
+                                <img src="@imgSrc_" class="img-thumbnail" alt="Cinque Terre" style="min-width: 200px; max-width: 200px; min-height:200px; max-height:200px;">
+                            </div>
+                            <br />
+                            <form class="form-horizontal form-bordered" asp-action="ExcluirCarParceiro" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input hidden asp-for="ID" />
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"></label>
+                                    <div class="col-md-6 col-xs-11">
+                                        <button type="submit" name="submit" value="@item.ID" class="btn btn-danger">Excluir</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+}
+
+@section Scripts{
+
+}
